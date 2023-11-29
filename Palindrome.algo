@@ -1,0 +1,54 @@
+/*Nom : Est un palindrome.  
+Description :  
+Teste si un mot est un palindrome. 
+Un mot est palindrome s'il peut être lu de gauche 
+à droite ou de droite à gauche : gag ; kayak ; php ; radar ;....
+
+Instructions :
+
+Décomposition du traitement : on compare 
+les caractères situés aux extrémités du mot :
+Si égalité on teste le reste du mot
+Si différence on arrête
+Condition d'arrêt : un mot vide ou un mot contenant
+un seul caractère est un palindrome.*/
+
+
+FUNCTION Est_palindrome(mot:STRING,i,j) : STRING
+VAR
+    i,j:=INTEGER;
+BEGIN
+    IF (i==j AND  mot[i]==mot[j]) THEN
+        // * SI ON ARRIVE ICI le mot est forcement palindrome
+        //! si les index sont égaux donc forcement on compare le meme charactere
+        //! la on doit stopé l'execution
+            RETURN Write("Le mot", mot ,"est palindrome");
+    END_IF IF (i<>j AND  mot[i]==mot[j]) THEN
+            // * SI ON ARRIVE ICI LE MOT est PRésumé PAlindrome jusqueau prochain charactere
+            // si les index ne sont pas egale cela veut dire
+            // que ce ne sont pas les meme charateres qui sont egaux
+            //?donc on continue de changer les index
+                Est_palindrome(mot, i+1,j-1);
+            END_IF IF (i<>j AND mot[i] <> mot[j]) THEN
+                    // ! si les index ne sont pas egaux et si les charateres ne sont pas  les meme
+                    //! on stop aussi l'execution car le mot n'est pas palindrome
+                    RETURN Write("Le mot", mot ,"n'est pas palindrome palindrome");
+                    END_IF
+    RETURN value ;
+END
+
+
+
+ALGORITHM Palindrome
+VAR
+    mot:= STRING;
+    i,j:= INTEGER;
+BEGIN
+    Write("Entrer votre mot , 
+    nous verifierons si c'est un palindrome(mot qui se lit dans les deux sens)");
+    Read(mot);
+    i=0;//i va commencer au premier charactere du mot
+    j=mot.length-1;//j va commencer au dernier charactere
+
+    Est_palindrome(mot,i,j);
+END
