@@ -33,7 +33,7 @@ BEGIN
                     // ! si les index ne sont pas egaux et si les charateres ne sont pas  les meme
                     //! on stop aussi l'execution car le mot n'est pas palindrome
                     RETURN Write("Le mot", mot ,"n'est pas palindrome palindrome");
-                    END_IF
+                    END_IF 
     RETURN value ;
 END
 
@@ -47,6 +47,10 @@ BEGIN
     Write("Entrer votre mot , 
     nous verifierons si c'est un palindrome(mot qui se lit dans les deux sens)");
     Read(mot);
+    WHILE (mot.length <= 1) DO
+        Write("Le mot doit avoir au moins  deux characteres");
+        Read(mot);
+    END_WHILE
     i=0;//i va commencer au premier charactere du mot
     j=mot.length-1;//j va commencer au dernier charactere
 
